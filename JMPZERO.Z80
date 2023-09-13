@@ -1,0 +1,12 @@
+; load binary    00110
+           ld    a,@00110
+           ld    b,a
+           xor   b
+           jp    z,sonra
+           add   a,b
+sonra:
+
+           halt
+
+
+

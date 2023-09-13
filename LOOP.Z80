@@ -1,0 +1,26 @@
+
+
+	.dfs $100," this is a string "
+	.dfb $200,$10,$20,$30,$40
+
+        .org $300
+
+        ld b,#18	; length of " this is a string "
+
+	ld hl,$100
+	ld de,$400
+
+dongu:
+	
+	ld   a,(hl)
+	ld   (de),a
+	inc	hl
+	inc	de
+
+        djnz dongu
+
+        halt
+
+
+
+

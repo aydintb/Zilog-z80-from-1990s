@@ -1,0 +1,14 @@
+
+      ld a,$33
+      ld b,$19
+      add a,b
+      daa     ; 52
+
+      ld a,$33
+      sub b
+      daa    ; 14
+
+
+      halt
+
+

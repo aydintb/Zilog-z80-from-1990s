@@ -1,0 +1,12 @@
+; ed 78
+; b8
+; c8
+; 18 fa
+
+.org  $100
+		ld	b,$10
+	wait:   in	a,c
+		djnz	wait
+		halt
+
+

@@ -1,0 +1,67 @@
+; 					AYDIN T. BAKIR, Bitirme odevi 1994.
+;
+;	A demostration program for I/O PORTS using the Z80 database.
+; DEMO:
+;   Read 5 bytes from the keyboard to adress 200H.  And sort them into
+;	decreasing order.  Then send this numbers to the ports 0,1,2,3 & 4
+;	respectively.  Choose program origin as 400H
+;
+;
+
+			.org	$400		    ; program origin
+			ld	hl,$200		    ; address to locate datas
+			ld	b, #5		    ; number of datas
+			ld	c, $80		    ; this port will allow us
+						    ; to get byte from keyboard
+
+TAKE:   				    ; read keyboard
+			in	a, c
+			ld	(hl),a
+			inc	hl
+			djnz	TAKE
+                                                 ; sorting
+			ld	b,#5	 ;  n times all over.. n*(n-1)
+SMAIN:
+			push	bc
+
+			ld	hl,$200
+			ld	b,#4
+
+SSUB:
+			ld      a,(hl)
+			inc	hl
+			ld      c,(hl)
+
+			cp	c              ; compare and swap..
+			jp	p, Snext
+			ld	(hl), a
+			dec	hl
+			ld	(hl), c
+			inc	hl
+
+Snext:
+			djnz	SSUB
+
+			pop	bc
+			djnz	SMAIN
+
+                                                  ; now send to ports.
+                        ld      b,$5
+                        ld      hl,$200
+                        xor     a
+                        ld      c,a
+
+ Porta:                 ld      a,(hl)
+                        out     c, a
+                        inc     hl        ; next data
+                        inc     c         ; next port
+
+                        djnz	porta
+
+			halt
+
+
+
+
+
+

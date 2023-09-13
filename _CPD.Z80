@@ -1,0 +1,21 @@
+;  Demo..
+;   CPD
+;
+
+	.dfb	$100,$10,$20,$30,$40
+        ;            100 101 102 103
+
+	.org	$300
+	ld	hl,$120
+	ld	bc,#100
+	ld	a,$30
+DîngÅ:
+	cpd
+	jp	z,BULUNDU
+	jp	po, CIK
+	jp	DîngÅ
+
+BULUNDU:
+	ld	($200),hl
+CIK:	halt
+

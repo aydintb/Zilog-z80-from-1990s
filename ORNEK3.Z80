@@ -1,0 +1,10 @@
+;ş ATB: sub-logic compiler.
+; €eŸitli komul kombinasyonlari.
+
+ld hl,$102
+sra (hl)
+dec hl
+rr (hl)
+dec hl
+rr (hl)
+

@@ -1,0 +1,23 @@
+; Demo..
+
+;	  .org	$100		; org = 256 decimal
+;	  .org  #100		; org = 100 decimal
+	  .org  @100		; org = 4   decimal
+
+           ld    a,@00110	; load binary . 0110b = 6h
+	   ld    b,#21          ; load decimal. 21  = 15h
+	   ld    c,$21          ; load hexadecimal.
+
+           ld    b,a
+           xor   b 
+           jp    z,sonra	; zero flag test.
+           add   a,b
+sonra:				; a NOP will replace, while no comment here!
+           halt
+
+; Eßer etiketlerden(label) sonra hiá komut verilmemiüse.. Yukarçda ki 
+; 'sonra:'da oldußu gibi.  Etiketten sonra program INITIAL.ME dosyasinin ÅáÅncÅ
+; satçrçnda okumuü oldußu NOP komutunu yerleütirecektir.
+;
+
+

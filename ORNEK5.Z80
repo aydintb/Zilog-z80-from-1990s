@@ -1,0 +1,7 @@
+
+	INC B
+	DEC B
+	LDI
+	CPI
+	BITIR
+

@@ -1,0 +1,52 @@
+
+;˛ ATB: multi emulator compiler.  		An example for the Z80 database.
+;
+;  			ELE 306 Lojik Devreler II.	1990 BÅtÅnleme 2.SORU
+; SORU(30p):  B000<->FFFF adresleri arasindaki hafiza bloßundaki datalarindan
+; ilk ASCII "ALI" kelimesinin adresini bulan ve 2040-2041 adresine yerlestiren
+; bir z80 programi yaziniz.
+; Not:
+;   Ascii _ Hex
+;	A = 41H	($41)		Mesajç bulamaz ise 2040-2041 adresslerine 0
+;	B = 4CH	($4C)		koyunuz.
+;	C = 49H	($49)
+;
+
+	;.dfb	$b010,$41,$4c,$49
+	.dfs	$b010,"ALI"
+
+	.org	$c000                       ; programin ofseti.
+
+	LD	DE,$FFFF
+	LD	HL,$AFFF
+TAKE:	INC	HL
+	CALL	CONTROL
+	LD	A,$41
+	CP	(HL)
+	JR	NZ, TAKE
+	INC	HL
+	CALL	CONTROL
+	LD	A,$4C
+	CP	(HL)
+	JR	NZ, TAKE
+	INC	HL
+	CALL	CONTROL
+	LD	A,$49
+	CP	(HL)
+	JR	NZ,TAKE
+	DEC	HL
+	DEC	HL
+	LD	($2040),HL
+	HALT
+
+CONTROL: XOR	A
+	PUSH	HL
+	SBC	HL,DE
+	JR	Z,FINISH
+	POP	HL
+	RET
+FINISH: LD	HL,$0000
+	LD	($2040),HL
+	HALT
+
+

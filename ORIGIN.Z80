@@ -1,0 +1,13 @@
+
+		.org	100
+
+		jp ikinci
+basla:	ld a,$4
+		halt
+
+		.org	150
+
+ikinci:	ld b,$6
+		jp	basla
+
+

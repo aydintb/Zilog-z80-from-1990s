@@ -1,0 +1,32 @@
+;  Demo Z80
+;    Bu demo'nun amacç .dfs, .dfb komutlarçnçn nasçl áalçütçßçnç gîstermektir.
+;
+;	Bu program DJNZ komutu yardçmç ile 100h adresinde bulunan 18 adet
+;	byte'ç 400h adresine kopyelemektedir.
+;
+	.dfs $100," this is a string "
+	.dfb $F000,$10,$20,$30,$40	
+
+        .org $300
+
+        ld b,#18	; length of " this is a string "
+
+	ld hl,$100
+	ld de,$400
+
+dîngÅ:
+	ld   a,(hl)
+	ld   (de),a
+
+	inc	hl
+	inc	de
+
+        djnz dîngÅ
+
+        halt
+	db	$10			; Z80 komutu olarak tançmlanmçü
+	dw	$1000			; DB ve DW komutlarçnçn kullançmç.
+	db	$20,#32
+	dw	$ff00,$3200
+
+

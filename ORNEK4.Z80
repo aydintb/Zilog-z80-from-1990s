@@ -1,0 +1,12 @@
+;þ ATB: sub-logic compiler.
+; €eŸitli komul kombinasyonlari.
+
+		ld	hl,$100
+		ld	de,$1000
+		ld	bc,$80
+		ld	a,$00
+MOVBUFF:	ldi
+		jp	po, NEXT
+		cp	(hl)
+		jp	nz, movbuff
+NEXT:		halt

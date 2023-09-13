@@ -1,0 +1,23 @@
+
+
+       ld  bc,$1234
+       push bc
+       pop  af        ; no direct load to the register AF
+       ld  bc,$5678
+       ld  de,$f0f0
+       ld  hl,$0f0f
+
+       ex   af,af'      ; swap
+       ex   af,af'
+
+       ex   de,hl       ; swap
+       ex   de,hl
+
+       ex   (sp),hl     ; swap
+       ex   (sp),hl
+
+       exx              ; swap all
+       exx
+
+       halt
+

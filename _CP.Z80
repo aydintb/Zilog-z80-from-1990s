@@ -1,0 +1,28 @@
+; Demo Z80..
+;	Bu îrnek CP komutunu kontrol etmek iáin kullançlçyor.
+
+	.dfs $100," this is a string $"
+	.dfb $200,$10,$20,$30,$40
+
+        .org $300
+
+	ld hl,$100
+	ld de,$400
+	ld b, $24	; ascii $. string end...
+
+dongu:
+	
+	ld   a,(hl)
+	ld   (de),a
+	inc	hl
+	inc	de
+
+	cp b
+
+        jp nz,dongu
+
+        halt
+
+
+
+

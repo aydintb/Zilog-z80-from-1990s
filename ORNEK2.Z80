@@ -1,0 +1,18 @@
+;þ ATB: sub-logic compiler.
+; €eŸitli komul kombinasyonlari.
+
+	LD	DE,$FFFF
+	LD	HL,$AFFF
+	LD	($2040),HL
+	LD	A, $F0
+
+        jp      cik
+
+        DB      $10,$20
+        DB      $30
+        dw      $1111
+        dw      $2222,$abc
+
+cik:
+	HALT
+

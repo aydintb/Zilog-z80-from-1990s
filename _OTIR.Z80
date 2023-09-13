@@ -1,0 +1,13 @@
+
+          .dfs     $a000,"01234567890123456789" ; 20 bytes length
+
+          .org     $100
+          ld       c,$e0
+          ld       hl,$a000
+          ld       b,#20
+
+          otir
+
+          halt
+
+

@@ -1,0 +1,18 @@
+;	jump ve call testi..
+
+	LD	DE,$FFFF
+	LD	HL,$AFFF
+TAKE:	CALL	CONTROL
+	LD	A,$4C
+	INC	HL
+	JP	FINISH
+
+CONTROL: PUSH	HL
+	POP	HL
+	RET
+
+FINISH: LD	HL,$0000
+	LD	($2040),HL
+	HALT
+
+

@@ -1,0 +1,30 @@
+
+
+       ld    a, @10101011  ; AB
+
+       rlc   a             ; 57, Carry flag = 1
+
+       ld    a, @01010101  ; 55
+       rrc   a             ; AA, Cf = 1
+
+       ld    hl, #100
+       ld    (hl),$AB
+       rlc   (hl)
+       ld    a,(hl)        ; 57
+
+       scf
+       ld    a,$80
+       rra                 ; c0
+
+       ld    (hl),$72
+       ld       a,$94       ; 9 4,72=> 9 2,47
+       rrd                  ; a = 92, (HL)=47
+       ld       b,(hl)
+
+       rld                  ; 9 247=>  9 472=> a=94, (hl)=72
+       ld       b,(hl)
+
+       halt
+
+
+

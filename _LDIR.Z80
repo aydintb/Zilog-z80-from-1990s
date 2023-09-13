@@ -1,0 +1,21 @@
+
+
+     .dfs $0,  " MULTI EMULATOR "; 16 bytes length
+     .dfs $100,"XXXXXXXXXXXXXXXX"; free memory
+
+     .org $200
+
+      ld  hl,$0
+      ld  de,$100
+      ld  bc,#16
+      ldir
+
+      halt
+
+
+
+
+
+
+
+

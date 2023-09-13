@@ -1,0 +1,15 @@
+; ed 78
+; b8
+; c8
+; 18 fa
+
+		ld	b,$10
+	wait:  ld c,$70
+		   out c,b
+		   inc c
+		   in a,c
+		djnz	wait
+		halt
+
+
+

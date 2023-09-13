@@ -1,0 +1,33 @@
+
+
+	.dfs $100," this is a string "	; define this string into memory.
+
+        .org $300	; program starting..
+
+        ld b,#18	; length of " this is a string "	in decimal.
+
+	ld hl,$100
+	ld c,$e0	; port address.
+
+dongu:
+	
+	ld	a,(hl)
+	out	c,a	; send data to the port..
+	in	d,c	; check the port..
+	cp	d
+	jp	nz, hata
+	inc	hl
+	inc	c
+
+        djnz dongu
+
+        ld      c,$80
+        in      a,c	; to attempt to read port 80 cause user to
+        ld      c,$e0	; input data from keyboard.
+        ;out     c,a
+        ld      c,#01
+        out     c,a
+
+hata:   halt
+
+
